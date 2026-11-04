@@ -52,3 +52,11 @@ cd frontend
 npm install
 npm run dev
 ```
+
+## 문서 안내
+
+| 문서 | 내용 |
+|------|------|
+| [CLAUDE.md](CLAUDE.md) | 개발 방식, 코딩 컨벤션, 실행 명령어 |
+| [backend/README.md](backend/README.md) | 백엔드 예정 구조와 개발 안내 |
+| [frontend/README.md](frontend/README.md) | 프론트엔드 예정 구조와 개발 안내 |

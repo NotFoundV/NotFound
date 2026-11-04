@@ -17,3 +17,11 @@ React, Vite, TypeScript 기반 웹 클라이언트를 위한 폴더입니다.
 컴포넌트는 함수형 컴포넌트와 훅으로 작성하고, 파일과 컴포넌트 이름은
 `PascalCase`, 훅과 유틸 이름은 `camelCase`를 사용합니다.
 설치된 의존성(`node_modules/`)과 빌드 결과물(`dist/`)은 커밋하지 않습니다.
+
+## 참고 문서
+
+| 문서 | 링크 |
+|------|------|
+| React | https://ko.react.dev/ |
+| Vite | https://vite.dev/guide/ |
+| TypeScript | https://www.typescriptlang.org/docs/ |

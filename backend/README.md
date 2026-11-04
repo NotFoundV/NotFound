@@ -16,3 +16,12 @@ Python 3.11 이상을 사용합니다. 의존성 목록과 앱 진입점이 추�
 
 로컬 환경변수와 SQLite DB 파일은 커밋하지 않습니다.
 필요한 환경변수 이름은 값 없이 `.env.example`에 기록합니다.
+
+## 참고 문서
+
+| 문서 | 링크 |
+|------|------|
+| FastAPI | https://fastapi.tiangolo.com/ko/ |
+| Pydantic | https://docs.pydantic.dev/latest/ |
+| Uvicorn | https://uvicorn.dev/ |
+| SQLite | https://www.sqlite.org/docs.html |

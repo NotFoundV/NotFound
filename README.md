@@ -18,9 +18,14 @@
 
 - [x] 모노레포 구조, 개발 가이드, `.gitignore` 초기 세팅
 - [x] 백엔드·프론트엔드 예정 구조 문서화
-- [ ] 백엔드 앱 초기화 (FastAPI)
-- [ ] 프론트엔드 앱 초기화 (React + Vite)
-- [ ] 아이디어 입력 → 유사 서비스 탐색 → AI 분석 → 비교 리포트 기능 구현
+- [x] 백엔드 앱 초기화 (FastAPI) — `feature/backend` 브랜치
+- [x] 프론트엔드 앱 초기화 (React + Vite) — `feature/frontend` 브랜치
+- [x] 분석 API(`POST /api/analyze`)와 이력 API(`GET /api/history`, `GET /api/history/{id}`)
+- [x] 웹 검색 기반 유사 서비스 탐색 + 4개 항목 분석 + 빈틈 인사이트
+- [x] 결과 카드, 항목 비교표, 인사이트 박스, 최근 분석 이력 화면
+- [x] 랜딩 페이지(`landing/index.html`)와 배포 문서(`docs/deploy.md`)
+- [ ] 실제 API 키로 분석 품질 검증 (키 없이 오류 처리와 화면만 확인함)
+- [ ] 분석 진행 단계를 서버 실제 진행 상황과 연동 (현재는 경과 시간 기준 표시)
 
 ## 기술 스택
 
@@ -42,24 +47,29 @@ NotFound/
 
 ## 시작하기
 
-> 아직 초기 세팅 단계입니다. `backend/`와 `frontend/`에는 앱 코드가 없으며,
-> 아래 명령어는 앱 초기화 후 사용할 실행 예시입니다. 현재 상태에서는 실행할 수 없습니다.
-
-개발 환경은 Python 3.11 이상과 Node.js/npm을 사용하도록 계획되어 있습니다.
-`requirements.txt`, `package.json` 및 앱 진입점은 각 앱을 초기화할 때 추가해야 합니다.
+Python 3.11 이상과 Node.js 20 이상이 필요합니다.
+백엔드는 `feature/backend`, 프론트엔드와 랜딩은 `feature/frontend` 브랜치에 있으니
+두 브랜치가 `main`에 병합된 뒤 아래 순서로 실행합니다.
 
 ```bash
-# 백엔드 (예정)
+# 백엔드 (http://127.0.0.1:8000)
 cd backend
-python -m venv .venv && .venv/Scripts/activate   # Windows
-pip install -r requirements.txt
+python -m venv .venv
+.venv/Scripts/activate            # Windows (macOS/Linux: source .venv/bin/activate)
+pip install -r requirements-dev.txt
+cp .env.example .env              # ANTHROPIC_API_KEY 채워 넣기
 uvicorn app.main:app --reload
+pytest                            # API 테스트
 
-# 프론트엔드 (예정)
+# 프론트엔드 (http://localhost:5173/app/)
 cd frontend
 npm install
-npm run dev
+npm run dev                       # /api 요청은 Vite 프록시가 8000번 백엔드로 넘김
 ```
+
+- 분석 한 번에 웹 검색을 포함해 1~3분이 걸리고 Anthropic API 사용료가 나갑니다.
+- 키가 없으면 `/api/analyze`는 503과 안내 문구를 돌려줍니다. 이력 조회는 키 없이 동작합니다.
+- 서버 배포 구성은 [docs/deploy.md](docs/deploy.md)를 참고하세요.
 
 ## 문서 안내
 
